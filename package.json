@@ -1,0 +1,17 @@
+{
+  "name": "node",
+  "scripts": {
+    "watch:server": "nodemon server.js",
+    "watch:express": "nodemon express.js"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "paranoidandroid13 <utf1313@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
