@@ -15,3 +15,5 @@ server.get('/name/:name', (req, res) => {
 server.listen(port, () => {
   console.log('server listeing')
 })
+
+console.log(port)
