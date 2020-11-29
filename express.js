@@ -1,15 +1,34 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 
 const server = express()
-
 const port = 3002
 
-server.get('/', (req, res) => {
-  return res.send('hi')
+server.use((req, res, next) => {
+  console.log(`${new Date()}: ${req.url} ${req.method}`)
+  next()
 })
 
-server.get('/name/:name', (req, res) => {
-  res.send(`hi, ${req.params.name}`)
+server.use(express.static('public'))
+
+server.use(bodyParser.json({ limit: '5mb' }))
+
+server.post('/', (req, res) => {
+  res.send(req.body)
+  console.log(req.body)
+})
+
+server.get('/', (req, res) => {
+  res.send('hi')
+})
+
+server.get('/json', (req, res) => {
+  res.json({ test: 1 })
+})
+
+server.get('/:name/:age', (req, res) => {
+  res.send(`hi, ${req.params.name} ${req.params.age}`)
+  console.log(req.params);
 })
 
 server.listen(port, () => {
